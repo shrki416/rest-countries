@@ -25,6 +25,7 @@ html,
 body {
   font-family: var(--ff), -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: var(--very-light-gray-light-mode-background);
 }
 
 a {
