@@ -1,17 +1,4 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import styles from "../styles/Card.module.css";
-
-export async function getStaticProps() {
-  const response = await fetch("https://restcountries.com/v3.1/all");
-  const data = await response.json();
-
-  return {
-    props: {
-      data,
-    },
-  };
-}
 
 export default function Home({ data }) {
   console.log(data);
@@ -23,29 +10,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-      <div className={styles.main}>
-        {data.map((country) => {
-          return (
-            <div className={styles.container} key={country.name.official}>
-              <div>
-                <img
-                  className={styles.flag}
-                  src={country.flags.svg}
-                  alt={country.name.common}
-                />
-              </div>
-
-              <div className={styles.info}>
-                <h2>{country.name.common}</h2>
-                <p>Population: {country.population}</p>
-                <p>Region: {country.region}</p>
-                <p>Capital: {country.capital}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      <h1>Rest Countries</h1>
     </div>
   );
 }
