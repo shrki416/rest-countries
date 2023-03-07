@@ -1,6 +1,19 @@
 import Head from "next/head";
+import Header from "../components/Header";
 
-export default function Home() {
+export async function getStaticProps() {
+  const response = await fetch(`https://restcountries.com/v3.1/all`);
+  const data = await response.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
+
+export default function Home({ data }) {
+  console.log(data.map((country) => country.flags));
   return (
     <div>
       <Head>
@@ -9,7 +22,17 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Rest Countries</h1>
+      <Header />
+
+      {data &&
+        data.map((country) => {
+          return (
+            <div key={country.name.common}>
+              <h2>{country.name.common}</h2>
+              <img src={country.flags.png} alt={country.name.common} />
+            </div>
+          );
+        })}
     </div>
   );
 }
