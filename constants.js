@@ -35,7 +35,5 @@ export const QUERIES = {
 };
 
 export const FAMILIES = {
-  mono: inconsolata.style.fontFamily,
-  serif: lora.style.fontFamily,
-  sansSerif: inter.style.fontFamily,
+  sansSerif: '"Nunito Sans", sans-serif',
 };

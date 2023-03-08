@@ -1,3 +1,4 @@
+import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
 import Header from "../components/Header";
 
@@ -22,6 +23,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <GlobalStyles />
       <Header />
 
       {/* {data &&
