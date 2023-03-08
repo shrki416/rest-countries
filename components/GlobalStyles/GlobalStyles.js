@@ -1,4 +1,4 @@
-import { COLORS, FAMILIES } from "../../constants";
+import { COLORS, FAMILIES, WEIGHTS } from "../../constants";
 
 import { createGlobalStyle } from "styled-components";
 
@@ -11,10 +11,14 @@ const GlobalStyles = createGlobalStyle`
   --blue-500: ${COLORS.blue[500]};
   --blue-600: ${COLORS.blue[600]};
   --blue-700: ${COLORS.blue[700]};
+
+  --fw-light: ${WEIGHTS.light};
+  --fw-semi-bold: ${WEIGHTS.semiBold};
+  --fw-extra-bold: ${WEIGHTS.extraBold};
   
   --error: ${COLORS.error};
 
-  --ff-nunito: ${FAMILIES.mono};
+  --ff-sans-serif: ${FAMILIES.sansSerif};
 }
 
 /*
@@ -43,6 +47,8 @@ html, body {
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--ff-sans-serif);
+  background-color: var(--gray-100);
 }
 /*
   6. Improve media defaults

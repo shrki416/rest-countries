@@ -1,4 +1,3 @@
-import GlobalStyles from "../components/GlobalStyles";
 import Head from "next/head";
 import Header from "../components/Header";
 
@@ -14,7 +13,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ data }) {
-  console.log(data.map((country) => country.flags));
   return (
     <div>
       <Head>
@@ -23,7 +21,6 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <GlobalStyles />
       <Header />
 
       {/* {data &&
