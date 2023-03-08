@@ -24,7 +24,7 @@ export default function Home({ data }) {
 
       <Header />
 
-      {data &&
+      {/* {data &&
         data.map((country) => {
           return (
             <div key={country.name.common}>
@@ -32,7 +32,7 @@ export default function Home({ data }) {
               <img src={country.flags.png} alt={country.name.common} />
             </div>
           );
-        })}
+        })} */}
     </div>
   );
 }
