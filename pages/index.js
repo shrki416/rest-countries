@@ -1,18 +1,37 @@
 import Head from "next/head";
 import Header from "../components/Header";
+import Search from "../components/Search";
 
 export async function getStaticProps() {
   const response = await fetch(`https://restcountries.com/v3.1/all`);
   const data = await response.json();
 
+  const isUnMember = data.filter((country) => country.unMember === true);
+
+  console.log(isUnMember.length);
+
+  const partialData = isUnMember.map(
+    ({ name, flags, population, region, capital, flag }) => {
+      return {
+        name: name.official,
+        flags,
+        population,
+        region,
+        capital: capital?.[0],
+        flag,
+      };
+    }
+  );
+
   return {
     props: {
-      data,
+      data: partialData,
     },
   };
 }
 
 export default function Home({ data }) {
+  // console.log({ data });
   return (
     <div>
       <Head>
@@ -22,13 +41,13 @@ export default function Home({ data }) {
       </Head>
 
       <Header />
+      <Search />
 
       {/* {data &&
-        data.map((country) => {
+        data.map(({ name, flag }) => {
           return (
-            <div key={country.name.common}>
-              <h2>{country.name.common}</h2>
-              <img src={country.flags.png} alt={country.name.common} />
+            <div key={name}>
+              <p>{flag}</p>
             </div>
           );
         })} */}

@@ -9,7 +9,7 @@ const Header = () => {
       <MainHeading>Where in the world?</MainHeading>
 
       <Toggle>
-        <Moon size={16} />
+        <Moon size={16} color="var(--blue-700)" />
         <span>Dark Mode</span>
       </Toggle>
     </Wrapper>
@@ -21,13 +21,13 @@ const Wrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 2rem 1rem;
-  box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.1);
+  box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.06);
   background-color: var(--white);
   color: var(--blue-700);
 
   @media ${QUERIES.tabletAndUp} {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-block: 1.5rem;
+    padding-inline: 5rem;
   }
 `;
 
@@ -47,10 +47,6 @@ const MainHeading = styled.h1`
 const Toggle = styled.div`
   display: flex;
   align-items: center;
-
-  svg {
-    fill: currentColor;
-  }
 
   span {
     font-size: ${12 / 16}rem;

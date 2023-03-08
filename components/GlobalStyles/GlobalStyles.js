@@ -8,11 +8,13 @@ const GlobalStyles = createGlobalStyle`
   --gray-100: ${COLORS.gray[100]};
   --gray-200: ${COLORS.gray[200]};
   --gray-300: ${COLORS.gray[300]};
+  --gray-400: ${COLORS.gray[400]};
   --blue-500: ${COLORS.blue[500]};
   --blue-600: ${COLORS.blue[600]};
   --blue-700: ${COLORS.blue[700]};
 
   --fw-light: ${WEIGHTS.light};
+  --fw-regular: ${WEIGHTS.regular};
   --fw-semi-bold: ${WEIGHTS.semiBold};
   --fw-extra-bold: ${WEIGHTS.extraBold};
   

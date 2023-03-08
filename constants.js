@@ -3,7 +3,8 @@ export const COLORS = {
   gray: {
     100: `hsl(0 0% 98%)`,
     200: `hsl(0 0% 91%)`,
-    300: `hsl(0 0% 52%)`,
+    300: `hsl(0 0% 70%)`,
+    400: `hsl(0 0% 52%)`,
   },
   blue: {
     500: `hsl(207 23% 22%)`,
@@ -15,6 +16,7 @@ export const COLORS = {
 
 export const WEIGHTS = {
   light: 300,
+  regular: 400,
   semiBold: 600,
   extraBold: 800,
 };
