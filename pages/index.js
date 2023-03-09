@@ -1,6 +1,5 @@
 import Card from "../components/Card";
 import Head from "next/head";
-import Header from "../components/Header";
 import { QUERIES } from "../constants";
 import Search from "../components/Search";
 import styled from "styled-components";
@@ -41,15 +40,12 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header /> */}
       <Search />
       {/* dropdown: filter by region */}
 
       <Main>
         {data &&
-          data.map((country) => (
-            <Card key={country.name} data={country} value={country.name} />
-          ))}
+          data.map((country) => <Card key={country.name} data={country} />)}
       </Main>
     </>
   );

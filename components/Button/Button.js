@@ -1,0 +1,16 @@
+import styled from "styled-components";
+
+export default function Button({ children, ...rest }) {
+  return <Link {...rest}>{children}</Link>;
+}
+
+const Link = styled.a`
+  text-decoration: none;
+  color: var(--blue-700);
+  background: var(--white);
+  padding: 0.5rem 1.5rem;
+  border-radius: 2px;
+  box-shadow: 0 0 7px 0 hsla(0, 0%, 0%, 0.1);
+  font-size: ${14 / 16}rem;
+  font-weight: var(--fw-light);
+`;
