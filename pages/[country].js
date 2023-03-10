@@ -18,18 +18,30 @@ export async function getStaticProps({ params }) {
     (item) => item[1].name
   );
 
+  const {
+    flags,
+    name,
+    population,
+    region,
+    subregion,
+    capital,
+    tld,
+    borders,
+    languages,
+  } = data[0];
+
   let relativeData = {
-    name: data[0].name.common,
+    name: name.common,
     nativeName: nativeName[0],
-    flags: data[0].flags,
-    population: data[0].population,
-    region: data[0].region,
-    subregion: data[0].subregion || "",
-    capital: data[0].capital[0],
+    flags,
+    population: population,
+    region,
+    subregion: subregion || "",
+    capital: capital[0],
     currency: currency[0],
-    tld: data[0].tld[0],
-    borders: data[0].borders || [],
-    languages: data[0].languages,
+    tld: tld[0],
+    borders: borders || [],
+    languages: languages,
   };
 
   return {
