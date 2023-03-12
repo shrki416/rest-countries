@@ -2,6 +2,7 @@ import Card from "../components/Card";
 import Head from "next/head";
 import { QUERIES } from "../constants";
 import Search from "../components/Search";
+import Select from "../components/Select";
 import styled from "styled-components";
 
 export async function getStaticProps() {
@@ -41,7 +42,7 @@ export default function Home({ data }) {
       </Head>
 
       <Search />
-      {/* dropdown: filter by region */}
+      <Select />
 
       <Main>
         {data &&
