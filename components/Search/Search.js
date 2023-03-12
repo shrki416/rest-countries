@@ -3,6 +3,7 @@ import { useMemo, useState } from "react";
 import { QUERIES } from "../../constants";
 import { Search as SearchIcon } from "react-feather";
 import styled from "styled-components";
+import { toLowerWithHyphen } from "../../utils";
 import { useRouter } from "next/router";
 
 function Search() {
@@ -12,7 +13,7 @@ function Search() {
   const onSubmit = useMemo(() => {
     function searchCountry(e) {
       e.preventDefault();
-      router.push(`/${search}`);
+      router.push(`/${toLowerWithHyphen(search)}`);
     }
 
     return searchCountry;

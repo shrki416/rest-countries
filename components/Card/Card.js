@@ -1,8 +1,9 @@
-import { formatNumber } from "../../utils";
+import { formatNumber, toLowerWithHyphen } from "../../utils";
+
 import styled from "styled-components";
 
 function Card({ data: { name, flags, population, region, capital } }) {
-  const country = name.toLowerCase().replace(/ /g, "-");
+  const country = toLowerWithHyphen(name);
   return (
     <Wrapper href={`/${country}`}>
       <Flag src={flags.png} alt={flags.alt} id={name} />
@@ -37,8 +38,8 @@ const Wrapper = styled.a`
 
 const Flag = styled.img`
   cursor: pointer;
-  border-radius-top-left: var(--border-radius);
-  border-radius-top-right: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 `;
 
 const Details = styled.div`
