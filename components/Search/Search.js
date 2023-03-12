@@ -13,7 +13,7 @@ function Search() {
   const onSubmit = useMemo(() => {
     function searchCountry(e) {
       e.preventDefault();
-      router.push(`/${toLowerWithHyphen(search)}`);
+      router.push(`/country/${toLowerWithHyphen(search)}`);
     }
 
     return searchCountry;

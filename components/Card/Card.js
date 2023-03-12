@@ -5,7 +5,7 @@ import styled from "styled-components";
 function Card({ data: { name, flags, population, region, capital } }) {
   const country = toLowerWithHyphen(name);
   return (
-    <Wrapper href={`/${country}`}>
+    <Wrapper href={`/country/${country}`}>
       <Flag src={flags.png} alt={flags.alt} id={name} />
       <Details>
         <h2>{name}</h2>

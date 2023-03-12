@@ -1,4 +1,4 @@
-import CardDetail from "../components/CardDetail/CardDetail";
+import CardDetail from "../../components/CardDetail/CardDetail";
 import Head from "next/head";
 
 const BASE_URL = "https://restcountries.com/v3.1";
