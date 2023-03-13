@@ -4,6 +4,7 @@ import Card from "../../components/Card";
 import Head from "next/head";
 import { QUERIES } from "../../constants";
 import React from "react";
+import Select from "../../components/Select/Select";
 import styled from "styled-components";
 
 const BASE_URL = "https://restcountries.com/v3.1/region";
@@ -61,6 +62,8 @@ const Region = ({ data }) => {
         <title>Region</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
+
+      <Select />
 
       <Main>
         {data.map((country) => {
