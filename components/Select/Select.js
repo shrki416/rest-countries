@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useRouter } from "next/router";
 
@@ -13,6 +13,16 @@ const Select = () => {
     { key: "europe", name: "Europe" },
     { key: "oceania", name: "Oceania" },
   ];
+
+  useEffect(() => {
+    if (selectedRegion !== "") {
+      router.push(`/region/${selectedRegion.toLowerCase()}`);
+    }
+
+    return () => {
+      setSelectedRegion("");
+    };
+  }, [selectedRegion]);
 
   return (
     <select onChange={(e) => setSelectedRegion(e.target.value)}>

@@ -55,7 +55,6 @@ export async function getStaticPaths() {
 }
 
 const Region = ({ data }) => {
-  console.log(data.name);
   return (
     <div>
       <Head>
@@ -64,8 +63,9 @@ const Region = ({ data }) => {
       </Head>
 
       <Main>
-        {data &&
-          data.map((country) => <Card key={country.name} data={country} />)}
+        {data.map((country) => {
+          return <Card key={country.name} data={country} />;
+        })}
       </Main>
     </div>
   );
