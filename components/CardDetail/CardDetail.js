@@ -7,53 +7,54 @@ function CardDetail({ data }) {
   ));
 
   return (
-    <Wrapper>
+    <>
       <Button href="/">&larr; Back</Button>
+      <Wrapper>
+        <Flag src={data.flags.png} alt={data.flags.alt} />
+        <Name>{data.name}</Name>
 
-      <Flag src={data.flags.png} alt={data.flags.alt} />
-      <Name>{data.name}</Name>
+        <ContentWrapper>
+          <p>
+            Native Name:
+            <span> {data.nativeName}</span>
+          </p>
+          <p>
+            Population:
+            <span> {data.population}</span>
+          </p>
+          <p>
+            Region:
+            <span> {data.region}</span>
+          </p>
+          <p>
+            Sub Region:
+            <span> {data?.subregion}</span>
+          </p>
+          <p>
+            Capital:
+            <span> {data.capital}</span>
+          </p>
+        </ContentWrapper>
 
-      <ContentWrapper>
-        <p>
-          Native Name:
-          <span> {data.nativeName}</span>
-        </p>
-        <p>
-          Population:
-          <span> {data.population}</span>
-        </p>
-        <p>
-          Region:
-          <span> {data.region}</span>
-        </p>
-        <p>
-          Sub Region:
-          <span> {data?.subregion}</span>
-        </p>
-        <p>
-          Capital:
-          <span> {data.capital}</span>
-        </p>
-      </ContentWrapper>
-
-      <ContentWrapper>
-        <p>
-          Currency:
-          <span> {data.currency}</span>
-        </p>
-        <p>
-          Top Level Domain:
-          <span> {data.tld}</span>
-        </p>
-        <div>
-          <p>Languages: {languages}</p>
-        </div>
-        {data.borders.length > 0 &&
-          data.borders.map((border, index) => (
-            <Button key={index}>{border}</Button>
-          ))}
-      </ContentWrapper>
-    </Wrapper>
+        <ContentWrapper>
+          <p>
+            Currency:
+            <span> {data.currency}</span>
+          </p>
+          <p>
+            Top Level Domain:
+            <span> {data.tld}</span>
+          </p>
+          <div>
+            <p>Languages: {languages}</p>
+          </div>
+          {data.borders.length > 0 &&
+            data.borders.map((border, index) => (
+              <Button key={index}>{border}</Button>
+            ))}
+        </ContentWrapper>
+      </Wrapper>
+    </>
   );
 }
 

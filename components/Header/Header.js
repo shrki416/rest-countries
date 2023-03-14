@@ -2,15 +2,26 @@ import { Moon, Sun } from "react-feather";
 
 import { QUERIES } from "../../constants";
 import styled from "styled-components";
+import { useState } from "react";
 
 const Header = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  function toggleTheme() {
+    setIsDarkMode((prev) => !prev);
+  }
+
   return (
     <Wrapper>
       <MainHeading>Where in the world?</MainHeading>
 
-      <Toggle>
-        <Moon size={16} color="var(--blue-700)" />
-        <span>Dark Mode</span>
+      <Toggle onClick={toggleTheme}>
+        {isDarkMode ? (
+          <Sun size={16} color="var(--blue-700)" />
+        ) : (
+          <Moon size={16} color="var(--blue-700)" />
+        )}
+        <span>{isDarkMode ? "light" : "dark"} Mode</span>
       </Toggle>
     </Wrapper>
   );
@@ -47,6 +58,7 @@ const MainHeading = styled.h1`
 const Toggle = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   span {
     font-size: ${12 / 16}rem;

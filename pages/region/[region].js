@@ -1,5 +1,6 @@
 import { formatNumber, toLowerWithHyphen } from "../../utils";
 
+import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Head from "next/head";
 import { QUERIES } from "../../constants";
@@ -63,7 +64,9 @@ const Region = ({ data }) => {
         <link rel="icon" href="favicon.ico" />
       </Head>
 
-      <Select />
+      <Button href="/">&larr; Back</Button>
+
+      {/* <Select /> */}
 
       <Main>
         {data.map((country) => {

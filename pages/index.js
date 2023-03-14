@@ -41,8 +41,10 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Search />
-      <Select />
+      <FormContainer>
+        <Search />
+        <Select />
+      </FormContainer>
 
       <Main>
         {data &&
@@ -63,5 +65,12 @@ const Main = styled.main`
     );
     grid-gap: 1rem;
     padding-inline: 5rem;
+  }
+`;
+
+const FormContainer = styled.div`
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+    justify-content: space-between;
   }
 `;
