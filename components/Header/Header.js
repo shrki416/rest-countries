@@ -21,7 +21,7 @@ const Header = () => {
         ) : (
           <Moon size={16} color="var(--blue-700)" />
         )}
-        <span>{isDarkMode ? "light" : "dark"} Mode</span>
+        <span>{isDarkMode ? "Light" : "Dark"} Mode</span>
       </Toggle>
     </Wrapper>
   );
@@ -64,6 +64,12 @@ const Toggle = styled.div`
     font-size: ${12 / 16}rem;
     margin-left: 0.5rem;
     font-weight: var(--fw-semi-bold);
+  }
+
+  @media ${QUERIES.tabletAndUp} {
+    span {
+      font-size: ${16 / 16}rem;
+    }
   }
 `;
 

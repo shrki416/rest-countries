@@ -64,8 +64,7 @@ const Container = styled.div`
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.05);
   border-radius: ${5 / 16}rem;
   position: relative;
-  width: 14em;
-  min-height: 1.5em;
+  max-width: ${200 / 16}rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -97,8 +96,6 @@ const ListBox = styled.ul`
   list-style: none;
 
   display: ${({ isOpen }) => (isOpen ? "block" : "none")};
-  max-height: 15em;
-  overflow-y: auto;
   border-radius: 5px;
   width: 100%;
   left: 0;
