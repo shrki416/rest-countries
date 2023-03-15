@@ -1,5 +1,5 @@
 import { ChevronDown, ChevronUp } from "react-feather";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { QUERIES } from "../../constants";
 import styled from "styled-components";
@@ -105,17 +105,13 @@ const ListBox = styled.ul`
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.05);
 `;
 
+/*
+Possibly add a highlighted and selected states to the list items
+**/
+
 const ListItem = styled.li`
   cursor: pointer;
   padding-block: 0.5rem;
-
-  /* &:highlighted {
-    background-color: green;
-    color: white;
-  }
-  &:selected {
-    background-color: red;
-  } */
 `;
 
 export default Select;
