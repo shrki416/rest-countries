@@ -1,5 +1,17 @@
 import { useEffect, useState } from "react";
 
+const lightTheme = {
+  body: `var(--gray-100)`,
+  accent: `var(--white)`,
+  text: "#000",
+};
+
+const darkTheme = {
+  body: `var(--blue-600)`,
+  accent: `var(--blue-500)`,
+  text: "#FFF",
+};
+
 export const useDarkMode = () => {
   const [theme, setTheme] = useState("light");
 
@@ -17,5 +29,5 @@ export const useDarkMode = () => {
     localTheme && setTheme(localTheme);
   }, []);
 
-  return [theme, toggleTheme];
+  return [theme, toggleTheme, lightTheme, darkTheme];
 };
