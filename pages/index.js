@@ -1,33 +1,17 @@
 import Card from "../components/Card";
 import Head from "next/head";
 import { QUERIES } from "../constants";
-import Search from "../components/Search/Search";
-import Select from "../components/Select/Select";
+import Search from "../components/Search";
+import Select from "../components/Select";
+import { fetchCountries } from "../lib/fetchCountry";
 import styled from "styled-components";
 
 export async function getStaticProps() {
-  const response = await fetch(`https://restcountries.com/v3.1/all`);
-  const data = await response.json();
-
-  const isUnMember = data.filter((country) => country.unMember === true);
-
-  const partialData = isUnMember.map(
-    ({ name, flags, population, region, capital, flag }) => {
-      return {
-        id: flag,
-        name: name.common,
-        flags,
-        population,
-        region,
-        capital: capital?.[0],
-        flag,
-      };
-    }
-  );
+  const countries = await fetchCountries();
 
   return {
     props: {
-      data: partialData,
+      data: countries,
     },
   };
 }
@@ -54,6 +38,13 @@ export default function Home({ data }) {
   );
 }
 
+const FormContainer = styled.div`
+  @media ${QUERIES.laptopAndUp} {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
 const Main = styled.main`
   --min-column-width: min(320px, 100%);
 
@@ -65,12 +56,5 @@ const Main = styled.main`
     );
     grid-gap: 1rem;
     padding-inline: 5rem;
-  }
-`;
-
-const FormContainer = styled.div`
-  @media ${QUERIES.laptopAndUp} {
-    display: flex;
-    justify-content: space-between;
   }
 `;

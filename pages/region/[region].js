@@ -1,42 +1,19 @@
-import { formatNumber, toLowerWithHyphen } from "../../utils";
-
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Head from "next/head";
 import { QUERIES } from "../../constants";
 import React from "react";
-import Select from "../../components/Select/Select";
+import { fetchCountriesByRegion } from "../../lib/fetchCountry";
 import styled from "styled-components";
-
-const BASE_URL = "https://restcountries.com/v3.1/region";
 
 export async function getStaticProps({ params }) {
   const { region } = params;
 
-  const ENDPOINT = `${BASE_URL}/${region}`;
-
-  const response = await fetch(ENDPOINT);
-  const data = await response.json();
-
-  const isUnMember = data.filter((country) => country.unMember === true);
-
-  const partialData = isUnMember.map(
-    ({ name, flags, population, region, capital, flag }) => {
-      return {
-        id: flag,
-        name: name.common,
-        flags,
-        population,
-        region,
-        capital: capital?.[0],
-        flag,
-      };
-    }
-  );
+  const data = await fetchCountriesByRegion(region);
 
   return {
     props: {
-      data: partialData,
+      data,
     },
   };
 }
@@ -57,21 +34,20 @@ export async function getStaticPaths() {
 }
 
 const Region = ({ data }) => {
+  const region = data[0].region;
   return (
     <div>
       <Head>
-        <title>Region</title>
+        <title>{region}</title>
         <link rel="icon" href="favicon.ico" />
       </Head>
 
       <Button href="/">&larr; Back</Button>
 
-      {/* <Select /> */}
-
       <Main>
-        {data.map((country) => {
-          return <Card key={country.name} data={country} />;
-        })}
+        {data.map((country) => (
+          <Card key={country.name} data={country} />
+        ))}
       </Main>
     </div>
   );
