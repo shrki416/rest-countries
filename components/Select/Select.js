@@ -60,7 +60,7 @@ const Select = () => {
 };
 
 const Container = styled.div`
-  background-color: var(--white);
+  background-color: ${({ theme }) => theme.accent};
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.05);
   border-radius: ${5 / 16}rem;
   position: relative;
@@ -73,7 +73,7 @@ const Container = styled.div`
   border-radius: 5px;
   outline: transparent;
   font-size: ${12 / 16}rem;
-  color: var(--blue-700);
+  color: ${({ theme }) => theme.text};
 
   &:focus {
     border-color: red;
@@ -101,7 +101,7 @@ const ListBox = styled.ul`
   left: 0;
   top: calc(100% + 0.25em);
   position: absolute;
-  background-color: #fff;
+  background-color: inherit;
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.05);
 `;
 

@@ -13,6 +13,7 @@ function Search() {
   const onSubmit = useMemo(() => {
     function searchCountry(e) {
       e.preventDefault();
+      if (!search) return;
       router.push(`/country/${toLowerWithHyphen(search)}`);
     }
 
@@ -37,7 +38,7 @@ function Search() {
 const Wrapper = styled.form`
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.05);
   border-radius: ${5 / 16}rem;
-  background-color: var(--white);
+  background-color: ${({ theme }) => theme.accent};
   margin: 1.5rem 1rem 2.5rem;
   padding: 1rem 2rem;
   display: flex;
@@ -51,6 +52,7 @@ const Wrapper = styled.form`
 
   @media ${QUERIES.tabletAndUp} {
     margin-inline: 5rem;
+    flex: 1;
   }
 `;
 
@@ -66,6 +68,8 @@ const VisuallyHidden = styled.label`
 `;
 
 const TextInput = styled.input`
+  color: ${({ theme }) => theme.text};
+  background-color: transparent;
   border: transparent;
   width: 100%;
 

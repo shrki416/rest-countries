@@ -50,7 +50,8 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-family: var(--ff-sans-serif);
-  background-color: var(--gray-100);
+  background: ${({ theme }) => theme.body};
+  transition: all 0.50s linear;
 }
 /*
   6. Improve media defaults

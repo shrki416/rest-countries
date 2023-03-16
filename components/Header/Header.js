@@ -2,26 +2,19 @@ import { Moon, Sun } from "react-feather";
 
 import { QUERIES } from "../../constants";
 import styled from "styled-components";
-import { useState } from "react";
 
-const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  function toggleTheme() {
-    setIsDarkMode((prev) => !prev);
-  }
-
+const Header = ({ theme, toggleTheme }) => {
   return (
     <Wrapper>
       <MainHeading>Where in the world?</MainHeading>
 
       <Toggle onClick={toggleTheme}>
-        {isDarkMode ? (
-          <Sun size={16} color="var(--blue-700)" />
+        {theme === "dark" ? (
+          <Sun size={16} color="var(--white)" />
         ) : (
           <Moon size={16} color="var(--blue-700)" />
         )}
-        <span>{isDarkMode ? "Light" : "Dark"} Mode</span>
+        <span>{theme === "dark" ? "Light" : "Dark"} Mode</span>
       </Toggle>
     </Wrapper>
   );
@@ -33,8 +26,8 @@ const Wrapper = styled.header`
   align-items: center;
   padding: 2rem 1rem;
   box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.06);
-  background-color: var(--white);
-  color: var(--blue-700);
+  background-color: ${({ theme }) => theme.accent};
+  color: ${({ theme }) => theme.text};
 
   @media ${QUERIES.tabletAndUp} {
     padding-block: 1.5rem;

@@ -25,12 +25,12 @@ function Card({ data: { name, flags, population, region, capital } }) {
 
 const Wrapper = styled.a`
   --border-radius: 5px;
-  --color: var(--blue-700);
+  --color: ${({ theme }) => theme.text};
   display: block;
   margin: 2.5rem auto;
   width: max-content;
   border-radius: var(--border-radius);
-  background: var(--white);
+  background: ${({ theme }) => theme.accent};
   box-shadow: 0 0 7px 2px hsla(0, 0%, 0%, 0.03);
   text-decoration: none;
   color: var(--color);
