@@ -51,7 +51,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: var(--ff-sans-serif);
   background: ${({ theme }) => theme.body};
-  transition: all 0.50s linear;
+  /* transition: all 0.3s linear; */
 }
 /*
   6. Improve media defaults
