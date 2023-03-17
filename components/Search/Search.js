@@ -4,7 +4,7 @@ import { QUERIES } from "../../constants";
 import { Search as SearchIcon } from "react-feather";
 import styled from "styled-components";
 import { toLowerWithHyphen } from "../../utils";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function Search() {
   const [search, setSearch] = useState("");
@@ -18,7 +18,7 @@ function Search() {
     }
 
     return searchCountry;
-  }, [search]);
+  }, [search, router]);
 
   return (
     <Wrapper onSubmit={onSubmit}>

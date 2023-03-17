@@ -1,16 +1,15 @@
-import { formatNumber, toLowerWithHyphen } from "../../utils";
-
 import styled from "styled-components";
+import { toLowerWithHyphen } from "../../utils";
 
 function Card({ data: { name, flags, population, region, capital } }) {
   const country = toLowerWithHyphen(name);
   return (
     <Wrapper href={`/country/${country}`}>
-      <Flag src={flags.png} alt={flags.alt} id={name} />
+      <Flag src={flags.png} alt={flags.alt} />
       <Details>
-        <h2>{name}</h2>
+        <h2>{name || ""}</h2>
         <p>
-          Population: <span>{formatNumber(population)}</span>
+          Population: <span>{population}</span>
         </p>
         <p>
           Region: <span>{region}</span>

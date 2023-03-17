@@ -3,12 +3,16 @@ import { fetchCountries, fetchCountry } from "../../lib/fetchCountry";
 import CardDetail from "../../components/CardDetail/CardDetail";
 import Head from "next/head";
 
-export async function getStaticProps({ params }) {
-  let { country } = params;
-  country = country.replace(/-/g, " ");
+export async function getStaticProps({ params: { country } }) {
+  switch (country) {
+    case "guinea-bissau":
+    case "timor-leste":
+      break;
+    default:
+      country = country.replace(/-/g, " ");
+  }
 
   const data = await fetchCountry(country);
-
   return {
     props: {
       data,

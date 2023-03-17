@@ -7,8 +7,8 @@ export default function Button({ children, ...rest }) {
 
 const Link = styled.a`
   text-decoration: none;
-  color: var(--blue-700);
-  background: var(--white);
+  color: ${({ theme }) => theme.text};
+  background: ${({ theme }) => theme.accent};
   padding: 0.5rem 1.5rem;
   border-radius: 2px;
   box-shadow: 0 0 7px 0 hsla(0, 0%, 0%, 0.1);

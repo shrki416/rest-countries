@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { QUERIES } from "../../constants";
 import styled from "styled-components";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const Select = () => {
   const [selectedRegion, setSelectedRegion] = useState("");
@@ -27,7 +27,7 @@ const Select = () => {
     return () => {
       setSelectedRegion("");
     };
-  }, [selectedRegion]);
+  }, [selectedRegion, router]);
 
   function selectOption(option) {
     setSelectedRegion(option);

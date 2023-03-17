@@ -14,45 +14,52 @@ function CardDetail({ data }) {
         <Name>{data.name}</Name>
 
         <ContentWrapper>
-          <p>
+          <DetailHeader>
             Native Name:
             <span> {data.nativeName}</span>
-          </p>
-          <p>
+          </DetailHeader>
+          <DetailHeader>
             Population:
             <span> {data.population}</span>
-          </p>
-          <p>
+          </DetailHeader>
+          <DetailHeader>
             Region:
             <span> {data.region}</span>
-          </p>
-          <p>
+          </DetailHeader>
+          <DetailHeader>
             Sub Region:
             <span> {data?.subregion}</span>
-          </p>
-          <p>
+          </DetailHeader>
+          <DetailHeader>
             Capital:
             <span> {data.capital}</span>
-          </p>
+          </DetailHeader>
         </ContentWrapper>
 
         <ContentWrapper>
-          <p>
+          <DetailHeader>
             Currency:
             <span> {data.currency}</span>
-          </p>
-          <p>
+          </DetailHeader>
+          <DetailHeader>
             Top Level Domain:
             <span> {data.tld}</span>
-          </p>
+          </DetailHeader>
           <div>
-            <p>Languages: {languages}</p>
+            <DetailHeader>Languages: {languages}</DetailHeader>
           </div>
-          {data.borders.length > 0 &&
-            data.borders.map((border, index) => (
-              <Button key={index}>{border}</Button>
-            ))}
         </ContentWrapper>
+
+        {data.borders.length > 0 && (
+          <ContentWrapper>
+            <BorderHeader>Borders Countries:</BorderHeader>
+            <BorderContainer>
+              {data.borders.map((border, index) => (
+                <Border key={index}>{border}</Border>
+              ))}
+            </BorderContainer>
+          </ContentWrapper>
+        )}
       </Wrapper>
     </>
   );
@@ -60,23 +67,24 @@ function CardDetail({ data }) {
 
 const Wrapper = styled.div`
   padding: 2.5rem 1.75rem;
+  color: ${({ theme }) => theme.text};
 `;
 
 const ContentWrapper = styled.div`
   margin-bottom: 2rem;
+`;
 
-  p {
-    padding-bottom: 1rem;
-    font-size: ${14 / 16}rem;
-    line-height: ${16 / 16}rem;
-    font-weight: var(--fw-semi-bold);
-  }
+const DetailHeader = styled.p`
+  padding-bottom: 1rem;
+  font-size: ${14 / 16}rem;
+  line-height: ${16 / 16}rem;
+  font-weight: var(--fw-semi-bold);
 
-  p:last-child {
+  &:last-child {
     padding-bottom: 0;
   }
 
-  p span {
+  span {
     font-weight: var(--fw-light);
   }
 `;
@@ -90,7 +98,25 @@ const Name = styled.h1`
   font-size: ${22 / 16}rem;
   line-height: ${30 / 16}rem;
   font-weight: var(--fw-extra-bold);
-  color: var(--blue-700);
+
+  margin-bottom: 1rem;
+`;
+
+const Border = styled(Button)`
+  display: revert;
+  margin: 0 10px 10px 0;
+  cursor: pointer;
+`;
+
+const BorderContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const BorderHeader = styled.h2`
+  font-size: ${16 / 16}rem;
+  line-height: ${24 / 16}rem;
+  font-weight: var(--fw-regular);
   margin-bottom: 1rem;
 `;
 
