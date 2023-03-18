@@ -1,16 +1,37 @@
+import { BREAKPOINTS, QUERIES } from "../../constants";
+import { useCallback, useEffect, useState } from "react";
+
 import Button from "../Button/Button";
 import styled from "styled-components";
+import { useRouter } from "next/navigation";
 
 function CardDetail({ data }) {
-  const languages = Object.entries(data.languages).map(([key, value]) => (
-    <span key={key}>{value}</span>
-  ));
+  const [width, setWidth] = useState(0);
+
+  const handleResize = useCallback(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
+
+  const isDesktop = width >= BREAKPOINTS.tabletMin;
+  const src = isDesktop ? data.flags.svg : data.flags.png;
+
+  const router = useRouter();
+
+  function handleClick(e) {
+    const border = e.target.textContent.toLowerCase();
+    router.push(`/country/${border}`);
+  }
 
   return (
     <>
       <Button href="/">&larr; Back</Button>
       <Wrapper>
-        <Flag src={data.flags.png} alt={data.flags.alt} />
+        <Flag src={src} alt={data.flags.alt} />
         <Name>{data.name}</Name>
 
         <ContentWrapper>
@@ -46,19 +67,29 @@ function CardDetail({ data }) {
             <span> {data.tld}</span>
           </DetailHeader>
           <div>
-            <DetailHeader>Languages: {languages}</DetailHeader>
+            <DetailHeader>
+              Languages:
+              <span>
+                {" "}
+                {data.languages && data.languages.length >= 1
+                  ? data.languages.join(", ")
+                  : data.languages}
+              </span>
+            </DetailHeader>
           </div>
         </ContentWrapper>
 
         {data.borders.length > 0 && (
-          <ContentWrapper>
+          <BorderWrapper>
             <BorderHeader>Borders Countries:</BorderHeader>
             <BorderContainer>
               {data.borders.map((border, index) => (
-                <Border key={index}>{border}</Border>
+                <Border key={index} onClick={(e) => handleClick(e)}>
+                  {border}
+                </Border>
               ))}
             </BorderContainer>
-          </ContentWrapper>
+          </BorderWrapper>
         )}
       </Wrapper>
     </>
@@ -68,6 +99,18 @@ function CardDetail({ data }) {
 const Wrapper = styled.div`
   padding: 2.5rem 1.75rem;
   color: ${({ theme }) => theme.text};
+
+  @media ${QUERIES.tabletAndUp} {
+    margin-inline: 5rem;
+    padding: 0;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -92,6 +135,17 @@ const DetailHeader = styled.p`
 const Flag = styled.img`
   margin: 40px 0 44px;
   border-radius: 5px;
+
+  @media ${QUERIES.tabletAndUp} {
+    width: ${560 / 16}rem;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-row: 1 / span 3;
+    grid-column: 1 / span 2;
+    margin: 0;
+    align-self: center;
+  }
 `;
 
 const Name = styled.h1`
@@ -100,16 +154,36 @@ const Name = styled.h1`
   font-weight: var(--fw-extra-bold);
 
   margin-bottom: 1rem;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-column: 3 / span 2;
+    align-self: center;
+  }
+`;
+
+const BorderWrapper = styled(ContentWrapper)`
+  @media ${QUERIES.laptopAndUp} {
+    grid-column: 3 / span 2;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 `;
 
 const Border = styled(Button)`
   display: revert;
   margin: 0 10px 10px 0;
   cursor: pointer;
+
+  @media ${QUERIES.laptopAndUp} {
+    margin: 0;
+  }
 `;
 
 const BorderContainer = styled.div`
   display: flex;
+  gap: 0.5rem;
   flex-wrap: wrap;
 `;
 
@@ -118,6 +192,10 @@ const BorderHeader = styled.h2`
   line-height: ${24 / 16}rem;
   font-weight: var(--fw-regular);
   margin-bottom: 1rem;
+
+  @media ${QUERIES.laptopAndUp} {
+    margin-bottom: 0;
+  }
 `;
 
 export default CardDetail;
