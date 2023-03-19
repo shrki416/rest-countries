@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import Button from "../Button/Button";
 import styled from "styled-components";
+import { toLowerWithHyphen } from "../../utils";
 import { useRouter } from "next/navigation";
 
 function CardDetail({ data }) {
@@ -23,7 +24,8 @@ function CardDetail({ data }) {
   const router = useRouter();
 
   function handleClick(e) {
-    const border = e.target.textContent.toLowerCase();
+    let border = e.target.textContent.toLowerCase();
+    border = toLowerWithHyphen(border);
     router.push(`/country/${border}`);
   }
 
