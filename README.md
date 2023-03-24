@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Here](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL/hub)
+- Solution URL: [Here](https://www.frontendmentor.io/solutions/rest-countries-solution-PRurmFwbvZ)
 - Live Site URL: [Live Site](https://rest-countries-shrki416.vercel.app/)
 
 ## My process
