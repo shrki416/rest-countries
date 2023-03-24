@@ -7,7 +7,7 @@ function Card({ data: { name, flags, population, region, capital } }) {
     <Wrapper href={`/country/${country}`}>
       <Flag src={flags.png} alt={flags.alt} />
       <Details>
-        <h2>{name || ""}</h2>
+        <h2>{name}</h2>
         <p>
           Population: <span>{population}</span>
         </p>
